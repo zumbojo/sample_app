@@ -7,6 +7,20 @@ gem 'rails', '3.0.7'
 
 gem 'sqlite3'
 
+# KML begin
+# part of Listing 3.1 in rails tutorial
+group :development do
+  gem 'rspec-rails', '2.5.0'
+end
+
+group :test do
+  gem 'rspec', '2.5.0'
+  gem 'webrat', '0.7.1'
+end
+# KML end
+
+
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
