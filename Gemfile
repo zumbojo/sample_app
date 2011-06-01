@@ -10,13 +10,24 @@ gem 'sqlite3'
 # KML begin
 # part of Listing 3.1 in rails tutorial
 group :development do
-  gem 'rspec-rails', '2.5.0'
+  gem 'rspec-rails', '2.6.1'
 end
 
 group :test do
-  gem 'rspec', '2.5.0'
+  gem 'rspec'
   gem 'webrat', '0.7.1'
 end
+
+# Had to twiddle some knobs to get rspec to run.  I am unsure what was effective and what was voodoo, but next time the problem occurs, try some permutation of:
+# gem uninstall rspec rspec-rails
+# gem install rspec
+# gem install rspec-core
+# gem install rspec-rails
+# [updating the Gemfile]
+# bundle install
+# [shouting profanities at MacBook or house cat]
+# bundle update
+
 # KML end
 
 
