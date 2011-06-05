@@ -11,6 +11,7 @@ gem 'sqlite3'
 # part of Listing 3.1 in rails tutorial
 group :development do
   gem 'rspec-rails', '2.6.1'
+  gem 'annotate-models' #added as optional part of section 6.1.2
 end
 
 group :test do
