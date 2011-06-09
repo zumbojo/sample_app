@@ -1,5 +1,5 @@
 SampleApp::Application.routes.draw do
-  get "users/new" # will be eliminated in Section 6.3.3
+  resources :users
 
   match '/signup', :to => 'users#new'
 
