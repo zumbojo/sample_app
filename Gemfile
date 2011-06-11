@@ -17,6 +17,7 @@ end
 group :test do
   gem 'rspec'
   gem 'webrat', '0.7.1'
+  gem 'factory_girl_rails', '1.0'
 end
 
 # Had to twiddle some knobs to get rspec to run.  I am unsure what was effective and what was voodoo, but next time the problem occurs, try some permutation of:
