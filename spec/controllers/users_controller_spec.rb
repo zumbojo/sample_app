@@ -318,6 +318,23 @@ describe UsersController do
                                            :content => "Next")
       end
     end
+
+
+# 10.6 Exercise #4
+
+    describe "as an admin user" do
+
+      before(:each) do
+        admin = Factory(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(admin)
+      end
+
+      it "should show delete links next to each user" do
+        get :index
+        response.should have_selector("a", :content => "delete")
+      end
+    end
+# ex
   end
 
   describe "DELETE 'destroy'" do
