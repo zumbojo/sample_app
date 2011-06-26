@@ -18,16 +18,20 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+    if signed_in?
+      redirect_to(root_path) 
     else
-      @title = "Sign up"
-      @user.password = nil
-      @user.password_confirmation = nil
-      render 'new'
+      @user = User.new(params[:user])
+      if @user.save
+        sign_in @user
+        flash[:success] = "Welcome to the Sample App!"
+        redirect_to @user
+      else
+        @title = "Sign up"
+        @user.password = nil
+        @user.password_confirmation = nil
+        render 'new'
+      end
     end
   end
 
