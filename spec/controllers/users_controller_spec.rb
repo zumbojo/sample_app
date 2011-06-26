@@ -36,36 +36,51 @@ describe UsersController do
   end
 
   describe "GET 'new'" do
-    it "should be successful" do
-      get :new
-      response.should be_success
+
+    describe "for signed-in users" do
+
+      before(:each) do
+        test_sign_in(Factory(:user))
+      end
+
+      it "should redirect to the root url" do # 10.6 Exercise #3
+        get :new
+        response.should redirect_to(root_path)
+      end
     end
 
-    it "should have the right title" do
-      get :new
-      response.should have_selector("title", :content => "Sign up")
-    end
+    describe "for non-signed-in users" do
+    
+      it "should be successful" do
+        get :new
+        response.should be_success
+      end
 
-    it "should have a name field" do
-      get :new
-      response.should have_selector("input[name='user[name]'][type='text']")
-    end
+      it "should have the right title" do
+        get :new
+        response.should have_selector("title", :content => "Sign up")
+      end
 
-    it "should have an email field" do
-      get :new
-      response.should have_selector("input[name='user[email]'][type='text']")
-    end
+      it "should have a name field" do
+        get :new
+        response.should have_selector("input[name='user[name]'][type='text']")
+      end
 
-    it "should have a password field" do
-      get :new
-      response.should have_selector("input[name='user[password]'][type='password']")
-    end
+      it "should have an email field" do
+        get :new
+        response.should have_selector("input[name='user[email]'][type='text']")
+      end
 
-    it "should have a password confirmation field" do
-      get :new
-      response.should have_selector("input[name='user[password_confirmation]'][type='password']")
-    end
+      it "should have a password field" do
+        get :new
+        response.should have_selector("input[name='user[password]'][type='password']")
+      end
 
+      it "should have a password confirmation field" do
+        get :new
+        response.should have_selector("input[name='user[password_confirmation]'][type='password']")
+      end
+    end
   end
 
   describe "POST 'create'" do

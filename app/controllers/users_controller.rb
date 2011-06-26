@@ -9,8 +9,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
-    @title = "Sign up"
+    if signed_in?
+      redirect_to(root_path) 
+    else
+      @user = User.new
+      @title = "Sign up"
+    end
   end
 
   def create
