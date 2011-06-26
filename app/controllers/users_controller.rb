@@ -60,22 +60,16 @@ class UsersController < ApplicationController
     @title = @user.name
   end
 
-# def destroy
-#   user_to_be_destroyed = User.find(params[:id]) 
-#   if current_user?(user_to_be_destroyed)
-#     flash[:error] = "Nice try Sylvia Plath, but destroying yourself is not allowed."
-#     redirect_to users_path
-#   else
-#     user_to_be_destroyed.destroy
-#     flash[:success] = "User destroyed."
-#     redirect_to users_path
-#   end
-# end
- 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
-    redirect_to users_path
+    user_to_be_destroyed = User.find(params[:id]) 
+    if current_user?(user_to_be_destroyed)
+      flash[:error] = "Nice try Sylvia Plath, but destroying yourself is not allowed."
+      redirect_to users_path
+    else
+      user_to_be_destroyed.destroy
+      flash[:success] = "User destroyed."
+      redirect_to users_path
+    end
   end
 
   private
