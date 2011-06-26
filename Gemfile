@@ -1,5 +1,9 @@
 source 'http://rubygems.org'
 
+# KML: A complete version of the Gemfile for this app is available in
+#   section 10.5, if this version (cobbled together throughout the tutorial)
+#   fails to work for any reason.
+
 gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
