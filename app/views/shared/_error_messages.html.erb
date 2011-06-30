@@ -1,4 +1,4 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %> <!-- http://stackoverflow.com/questions/4848052/ruby-on-rails-tutorial-rails-3-0-chapter-11-rspec-fails-after-code-listing-11-2/4848355#4848355 -->
   <div id="error_explanation">
     <h2><%= pluralize(object.errors.count, "error") %> 
       prohibited this <%= object.class.to_s.underscore.humanize.downcase %>
