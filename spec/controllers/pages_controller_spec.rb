@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'Faker'
 
 describe PagesController do
   render_views
@@ -17,6 +18,32 @@ describe PagesController do
       get 'home'
       response.should have_selector("title",
                                    :content => @base_title + " | Home")
+    end
+
+    # for signed in users
+    # pagination of microposts
+    describe "for signed-in users" do
+
+      before(:each) do
+        @user = Factory(:user)
+        test_sign_in(@user)
+
+        # attach a bunch of microposts to this user
+        50.times do
+          @user.microposts.create!(:content => Faker::Lorem.sentence(5))
+        end
+      end
+      
+      it "should paginate microposts" do
+        get 'home'
+        response.should have_selector("div.pagination")
+        response.should have_selector("span.disabled", :content => "Previous")
+        response.should have_selector("a", :href => "/?page=2",
+                                           :content => "2")
+        response.should have_selector("a", :href => "/?page=2",
+                                           :content => "Next")
+      end
+        
     end
   end
 
