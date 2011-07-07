@@ -3,7 +3,12 @@ SampleApp::Application.routes.draw do
     # KML: this line doesn't appear in Listing 9.2,
     # and removing it does not break any current tests.
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :sessions, :only => [:new, :create, :destroy]
   resources :microposts, :only => [:create, :destroy]
 
